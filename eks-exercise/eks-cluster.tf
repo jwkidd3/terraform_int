@@ -1,9 +1,9 @@
 resource "aws_eks_cluster" "demo" {
   name     = var.cluster-name
-  role_arn = aws_iam_role.demo-cluster.arn
+  role_arn = aws_iam_role.exercise-cluster.arn
 
   vpc_config {
-    security_group_ids = [aws_security_group.demo-cluster.id]
+    security_group_ids = [aws_security_group.exercise-cluster.id]
     # TF-UPGRADE-TODO: In Terraform v0.10 and earlier, it was sometimes necessary to
     # force an interpolation expression to be interpreted as a list by wrapping it
     # in an extra set of list brackets. That form was supported for compatibilty in
@@ -16,8 +16,8 @@ resource "aws_eks_cluster" "demo" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.demo-cluster-AmazonEKSClusterPolicy,
-    aws_iam_role_policy_attachment.demo-cluster-AmazonEKSServicePolicy,
+    aws_iam_role_policy_attachment.exercise-cluster-AmazonEKSClusterPolicy,
+    aws_iam_role_policy_attachment.exercise-cluster-AmazonEKSServicePolicy,
   ]
 }
 
